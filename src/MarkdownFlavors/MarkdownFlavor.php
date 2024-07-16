@@ -1,24 +1,24 @@
 <?php
-namespace AntonioPrimera\CustomMarkdown\MarkdownFlavors;
+namespace AntonioPrimera\Md\MarkdownFlavors;
 
-use AntonioPrimera\CustomMarkdown\InlineParsers\InlineParserCollection;
-use AntonioPrimera\CustomMarkdown\NodeParsers\NodeParserCollection;
-use AntonioPrimera\CustomMarkdown\ParserInterface;
-use AntonioPrimera\CustomMarkdown\Splitters\MarkdownSplitter;
+use AntonioPrimera\Md\InlineParsers\InlineParserCollection;
+use AntonioPrimera\Md\NodeParsers\NodeParserCollection;
+use AntonioPrimera\Md\ParserInterface;
+use AntonioPrimera\Md\Splitters\AbstractMarkdownSplitter;
 
 class MarkdownFlavor implements ParserInterface
 {
-	public MarkdownSplitter $splitter;
+	public AbstractMarkdownSplitter $splitter;
 	public NodeParserCollection $nodeParsers;
 	public InlineParserCollection $inlineParsers;
 	
 	//--- Construction ------------------------------------------------------------------------------------------------
 	
 	public function __construct(
-		MarkdownSplitter $splitter,
-		NodeParserCollection|array|null $nodeParsers = null,
+		AbstractMarkdownSplitter          $splitter,
+		NodeParserCollection|array|null   $nodeParsers = null,
 		InlineParserCollection|array|null $inlineParsers = null,
-		array $config = []
+		array                             $config = []
 	)
 	{
 		$this->splitter = $splitter;

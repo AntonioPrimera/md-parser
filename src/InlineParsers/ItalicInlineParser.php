@@ -1,7 +1,7 @@
 <?php
-namespace AntonioPrimera\CustomMarkdown\InlineParsers;
+namespace AntonioPrimera\Md\InlineParsers;
 
-class ItalicParser extends InlineParser
+class ItalicInlineParser extends AbstractInlineParser
 {
 	
 	public function parse(string $text): string|null

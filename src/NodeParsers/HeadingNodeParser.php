@@ -1,7 +1,7 @@
 <?php
-namespace AntonioPrimera\CustomMarkdown\NodeParsers;
+namespace AntonioPrimera\Md\NodeParsers;
 
-class HeadingParser extends NodeParser
+class HeadingNodeParser extends AbstractNodeParser
 {
 	const BASE_HEADING_LEVEL = 'base_heading_level';
 	

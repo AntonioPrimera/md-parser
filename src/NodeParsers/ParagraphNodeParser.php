@@ -1,7 +1,7 @@
 <?php
-namespace AntonioPrimera\CustomMarkdown\NodeParsers;
+namespace AntonioPrimera\Md\NodeParsers;
 
-class ParagraphParser extends NodeParser
+class ParagraphNodeParser extends AbstractNodeParser
 {
 	public string|null $alias = 'paragraph';
 	

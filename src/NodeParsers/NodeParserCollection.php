@@ -1,7 +1,7 @@
 <?php
-namespace AntonioPrimera\CustomMarkdown\NodeParsers;
+namespace AntonioPrimera\Md\NodeParsers;
 
-use AntonioPrimera\CustomMarkdown\ParserInterface;
+use AntonioPrimera\Md\ParserInterface;
 
 class NodeParserCollection implements ParserInterface
 {
@@ -9,7 +9,7 @@ class NodeParserCollection implements ParserInterface
 	
 	public function __construct(array $parsers)
 	{
-		$this->parsers = arrayMapWithKeys($parsers, fn(NodeParser $parser) => [$parser->alias() => $parser]);
+		$this->parsers = arrayMapWithKeys($parsers, fn(AbstractNodeParser $parser, $key) => [(is_numeric($key) ? $parser->alias() : $key) => $parser]);
 	}
 	
 	/**
@@ -18,7 +18,7 @@ class NodeParserCollection implements ParserInterface
 	 */
 	public function parse(string $text): string|null
 	{
-		/* @var NodeParser $parser */
+		/* @var AbstractNodeParser $parser */
 		foreach ($this->parsers as $parser)
 			if ($parser->matches($text))
 				return $parser->parse($text);
@@ -26,7 +26,7 @@ class NodeParserCollection implements ParserInterface
 		return $text;
 	}
 	
-	public function getParser(string $parserAlias): NodeParser|null
+	public function getParser(string $parserAlias): AbstractNodeParser|null
 	{
 		return $this->parsers[$parserAlias] ?? null;
 	}

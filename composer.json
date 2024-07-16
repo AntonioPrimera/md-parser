@@ -2,10 +2,10 @@
     "name": "antonioprimera/custom-markdown",
     "description": "Custom Markdown Processor",
     "license": "MIT",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "autoload": {
         "psr-4": {
-            "AntonioPrimera\\CustomMarkdown\\": "src/"
+            "AntonioPrimera\\Md\\": "src/"
         },
         "files": [
             "src/helpers.php"

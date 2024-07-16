@@ -1,33 +1,29 @@
 <?php
-namespace AntonioPrimera\CustomMarkdown;
+namespace AntonioPrimera\Md;
 
-abstract class Parser implements ParserInterface
+use AntonioPrimera\Md\MarkdownFlavors\MarkdownFlavor;
+
+class Parser implements ParserInterface
 {
+    public function __construct(public readonly MarkdownFlavor $flavor)
+    {
+    }
 	
-	/**
-	 * The parser alias, so it can be easily addressed in the config
-	 * If not set, the fully qualified class name will be used as alias
-	 */
-	public string|null $alias = null;
-	
-	public function __construct(protected array $config = [])
+	public static function create(MarkdownFlavor $flavor): static
 	{
+		return new static($flavor);
 	}
 	
-	//--- Config handling ---------------------------------------------------------------------------------------------
+    //--- Processing methods ------------------------------------------------------------------------------------------
 	
-	public function getConfig(string $key, mixed $default = null): mixed
+	public function parse(string $text): string|null
 	{
-		return $this->config[$key] ?? $default;
+		return $this->flavor->parse($text);
 	}
 	
-	public function setConfig(string $key, mixed $value): void
+	public function setConfig(string $parserClass, string $key, mixed $value): static
 	{
-		$this->config[$key] = $value;
-	}
-	
-	public function alias(): string
-	{
-		return $this->alias ?? static::class;
+		$this->flavor->setConfig($parserClass, $key, $value);
+		return $this;
 	}
 }

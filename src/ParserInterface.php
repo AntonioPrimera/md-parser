@@ -1,5 +1,5 @@
 <?php
-namespace AntonioPrimera\CustomMarkdown;
+namespace AntonioPrimera\Md;
 
 interface ParserInterface
 {

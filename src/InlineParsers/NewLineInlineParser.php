@@ -1,7 +1,7 @@
 <?php
-namespace AntonioPrimera\CustomMarkdown\InlineParsers;
+namespace AntonioPrimera\Md\InlineParsers;
 
-class NewLineParser extends InlineParser
+class NewLineInlineParser extends AbstractInlineParser
 {
 	const MARKDOWN = 'markdown';
 	

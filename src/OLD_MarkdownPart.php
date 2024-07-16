@@ -1,7 +1,7 @@
 <?php
-namespace AntonioPrimera\CustomMarkdown;
+namespace AntonioPrimera\Md;
 
-use AntonioPrimera\CustomMarkdown\NodeParsers\NodeParser;
+use AntonioPrimera\Md\NodeParsers\AbstractNodeParser;
 
 class OLD_MarkdownPart
 {
@@ -23,7 +23,7 @@ class OLD_MarkdownPart
 	{
 		//find the processor that matches the part and process it
 		foreach ($this->processors as $processor)
-			if ($processor instanceof NodeParser && $processor->matches($this->part))
+			if ($processor instanceof AbstractNodeParser && $processor->matches($this->part))
 				return $processor->process($processor->usesTrimmedPart() ? $this->trimmedPart : $this->part);
 		
 		//if no processor was found, return the part as is

@@ -1,7 +1,7 @@
 <?php
-namespace AntonioPrimera\CustomMarkdown\InlineParsers;
+namespace AntonioPrimera\Md\InlineParsers;
 
-use AntonioPrimera\CustomMarkdown\ParserInterface;
+use AntonioPrimera\Md\ParserInterface;
 
 class InlineParserCollection implements ParserInterface
 {
@@ -12,7 +12,7 @@ class InlineParserCollection implements ParserInterface
 	 */
 	public function __construct(array $parsers)
 	{
-		$this->parsers = arrayMapWithKeys($parsers, fn(InlineParser $parser) => [$parser->alias() => $parser]);
+		$this->parsers = arrayMapWithKeys($parsers, fn(AbstractInlineParser $parser, $key) => [(is_numeric($key) ? $parser->alias() : $key) => $parser]);
 	}
 	
 	/**
@@ -22,14 +22,14 @@ class InlineParserCollection implements ParserInterface
 	{
 		$parsedText = $text;
 		
-		/* @var InlineParser $parser */
+		/* @var AbstractInlineParser $parser */
 		foreach ($this->parsers as $parser)
 			$parsedText = $parser->parse($parsedText);
 		
 		return $parsedText;
 	}
 	
-	public function getParser(string $parserAlias): InlineParser|null
+	public function getParser(string $parserAlias): AbstractInlineParser|null
 	{
 		return $this->parsers[$parserAlias] ?? null;
 	}

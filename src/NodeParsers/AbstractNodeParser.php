@@ -1,9 +1,9 @@
 <?php
-namespace AntonioPrimera\CustomMarkdown\NodeParsers;
+namespace AntonioPrimera\Md\NodeParsers;
 
-use AntonioPrimera\CustomMarkdown\Parser;
+use AntonioPrimera\Md\AbstractParser;
 
-abstract class NodeParser extends Parser
+abstract class AbstractNodeParser extends AbstractParser
 {
 	const USES_TRIMMED_PART = 'usesTrimmedPart';
 	
