@@ -1,33 +1,23 @@
 <?php
 namespace AntonioPrimera\Md;
 
-abstract class AbstractParser implements ParserInterface
+use AntonioPrimera\Md\Traits\UsesConfig;
+
+abstract class AbstractParser
 {
+	use UsesConfig;
+	
+	public function __construct(array $config = [])
+	{
+		$this->config = $config;
+	}
 	
 	/**
-	 * The parser alias, so it can be easily addressed in the config
-	 * If not set, the fully qualified class name will be used as alias
+	 * Returns the class name in kebab case without the "-parser" suffix
+	 * e.g. "LineBreakParser" -> "line-break"
 	 */
-	public string|null $alias = null;
-	
-	public function __construct(protected array $config = [])
-	{
-	}
-	
-	//--- Config handling ---------------------------------------------------------------------------------------------
-	
-	public function getConfig(string $key, mixed $default = null): mixed
-	{
-		return $this->config[$key] ?? $default;
-	}
-	
-	public function setConfig(string $key, mixed $value): void
-	{
-		$this->config[$key] = $value;
-	}
-	
 	public function alias(): string
 	{
-		return $this->alias ?? static::class;
+		return str_replace('-parser', '', kebabCase(classBasename($this)));
 	}
 }

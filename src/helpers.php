@@ -32,3 +32,19 @@ function arrayMap(array $array, callable $callback): array
 	
 	return $result;
 }
+
+function kebabCase(string $string): string
+{
+	return strtolower(preg_replace('/(?<!^)[A-Z]/', '-$0', $string));
+}
+
+function classBasename(mixed $classOrObject): string
+{
+	$class = is_object($classOrObject) ? get_class($classOrObject) : $classOrObject;
+	return basename(str_replace('\\', '/', $class));
+}
+
+function debug(mixed $value): void
+{
+	file_put_contents(__DIR__ . '/../debug.txt', print_r($value, true), FILE_APPEND);
+}

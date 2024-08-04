@@ -1,10 +1,12 @@
 <?php
 namespace AntonioPrimera\Md\InlineParsers;
 
-class BoldInlineParser extends AbstractInlineParser
+use AntonioPrimera\Md\InlineParser;
+
+class BoldParser extends InlineParser
 {
 	
-	public function parse(string $text): string|null
+	public function parse(string $text): string
 	{
 		//find all ***...*** tags and extract the contents between the tags
 		$pattern = '/\*\*(.+)\*\*/s';
