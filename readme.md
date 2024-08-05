@@ -32,6 +32,14 @@ The main parser is a class that is instantiated with a set of inline parsers, a 
 a block splitter and also an optional config. Once instantiated, you can call the `parse` method with a
 markdown string, and it will return the parsed result.
 
+First, import the package via composer:
+
+```bash
+composer require antonio-primera/md-parser
+```
+
+Then, you can use the default flavor, or create your own.
+
 If you want to use the default flavor, you can do it like this:
 
 ```php

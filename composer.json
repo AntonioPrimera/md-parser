@@ -2,7 +2,6 @@
     "name": "antonioprimera/md-parser",
     "description": "Custom Markdown Processor",
     "license": "MIT",
-    "version": "0.2.0",
     "autoload": {
         "psr-4": {
             "AntonioPrimera\\Md\\": "src/"
