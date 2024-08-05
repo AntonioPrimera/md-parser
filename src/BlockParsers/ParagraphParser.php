@@ -3,10 +3,8 @@ namespace AntonioPrimera\Md\BlockParsers;
 
 use AntonioPrimera\Md\BlockParser;
 
-class ParagraphNodeParser extends BlockParser
+class ParagraphParser extends BlockParser
 {
-	public string|null $alias = 'paragraph';
-	
 	public function matches(string $text, array $parsedBlocks = []): bool
 	{
 		return true;

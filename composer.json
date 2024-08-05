@@ -18,7 +18,8 @@
         }
     ],
     "require": {
-        "php": ">=8.1"
+        "php": ">=8.1",
+        "illuminate/support": ">=10"
     },
     "require-dev": {
         "pestphp/pest": "^2.34"
@@ -30,5 +31,15 @@
     },
     "scripts": {
         "test": "./vendor/bin/pest"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AntonioPrimera\\Md\\ServiceProviders\\MarkdownParserServiceProvider"
+            ],
+            "aliases": {
+                "Md": "AntonioPrimera\\Md\\Facades\\Md"
+            }
+        }
     }
 }

@@ -1,8 +1,6 @@
 <?php
 namespace AntonioPrimera\Md\Blocks;
 
-use AntonioPrimera\Md\Blocks\Traits\HasItems;
-
 class UnorderedList extends MarkdownBlock
 {
 	public array $items = [];
