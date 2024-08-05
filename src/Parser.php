@@ -46,10 +46,13 @@ class Parser
 	
 	public function addInlineParser(string|int $alias, InlineParser|string $inlineParser): static
 	{
+		$parserInstance = $inlineParser instanceof InlineParser ? $inlineParser : new $inlineParser();
 		$parserAlias = is_string($alias) ? $alias : $inlineParser->alias();
-		$this->inlineParsers[$parserAlias] = $inlineParser instanceof InlineParser
-			? $inlineParser
-			: new $inlineParser($this->getConfig($parserAlias, []));
+		$parserConfig = $this->getConfig($parserAlias, []);
+		if ($parserConfig)
+			$parserInstance->setConfig($parserConfig);
+		
+		$this->inlineParsers[$parserAlias] = $parserInstance;
 		
 		return $this;
 	}
@@ -64,10 +67,13 @@ class Parser
 	
 	public function addBlockParser(string|int $alias, BlockParser|string $blockParser): static
 	{
+		$parserInstance = $blockParser instanceof BlockParser ? $blockParser : new $blockParser();
 		$parserAlias = is_string($alias) ? $alias : $blockParser->alias();
-		$this->blockParsers[$parserAlias] = $blockParser instanceof BlockParser
-			? $blockParser
-			: new $blockParser($this->getConfig($parserAlias, []));
+		$parserConfig = $this->getConfig($parserAlias, []);
+		if ($parserConfig)
+			$parserInstance->setConfig($parserConfig);
+		
+		$this->blockParsers[$parserAlias] = $parserInstance;
 		
 		return $this;
 	}
