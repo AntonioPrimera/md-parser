@@ -9,7 +9,7 @@ class MarkdownParserServiceProvider extends ServiceProvider
 	public function register(): void
 	{
 		//merge the default config with the user's config
-		$this->mergeConfigFrom(__DIR__.'/config/md.php', 'md-parser');
+		$this->mergeConfigFrom(__DIR__.'/config/md-parser.php', 'md-parser');
 		
 		//create a singleton instance of the Parser class, using the factory class defined in the config
 		$this->app->singleton('md-parser', function($app){
@@ -23,7 +23,7 @@ class MarkdownParserServiceProvider extends ServiceProvider
 	public function boot(): void
 	{
 		$this->publishes([
-			__DIR__.'/config/md.php' => config_path('md-parser.php'),
+			__DIR__.'/config/md-parser.php' => config_path('md-parser.php'),
 		], 'md-config');
 	}
 }
