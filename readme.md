@@ -198,3 +198,6 @@ What still needs to be done:
 - making this documentation better
 
 If you want to contribute, feel free to fork the repository and submit a pull request. If you have any questions, feel free to ask.
+
+Most of the specifications for the Markdown parser are based on the following resource:
+- https://markdownguide.offshoot.io/basic-syntax/
