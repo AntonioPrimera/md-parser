@@ -4,8 +4,63 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "39dda308391645fb01fbb08a62b02452",
+    "content-hash": "f71b149b3b87c4549943560c174dd9e8",
     "packages": [
+        {
+            "name": "antonioprimera/php-helpers",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AntonioPrimera/php-helpers.git",
+                "reference": "58a017789fa7da837b8a9c6a2351f10dc50eea98"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AntonioPrimera/php-helpers/zipball/58a017789fa7da837b8a9c6a2351f10dc50eea98",
+                "reference": "58a017789fa7da837b8a9c6a2351f10dc50eea98",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0",
+                "pestphp/pest": "^2.20",
+                "spatie/ray": "^1.28"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/stringHelpers.php",
+                    "src/arrayHelpers.php"
+                ],
+                "psr-4": {
+                    "AntonioPrimera\\PhpHelpers\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Antonio Primera",
+                    "email": "antonio@cus.ro",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A lightweight set of php helpers, providing some missing or hard to achieve functionality, without the need to import some larger packages",
+            "homepage": "https://github.com/antonioprimera/php-helpers",
+            "keywords": [
+                "antonioprimera",
+                "php-helpers"
+            ],
+            "support": {
+                "issues": "https://github.com/AntonioPrimera/php-helpers/issues",
+                "source": "https://github.com/AntonioPrimera/php-helpers/tree/v0.1"
+            },
+            "time": "2024-08-21T17:50:49+00:00"
+        },
         {
             "name": "carbonphp/carbon-doctrine-types",
             "version": "3.2.0",
