@@ -95,6 +95,10 @@ class Parser
 	
 	//--- Parsing -----------------------------------------------------------------------------------------------------
 	
+	/**
+	 * Parses the given text using inline and block parsers
+	 * Always returns at least one block of text (paragraph, heading, list etc.)
+	 */
 	public function parse(string $text): string
 	{
 		//first parse the text using the inline parsers (this is done before splitting the text into nodes)
@@ -118,6 +122,14 @@ class Parser
 		$this->handleEmptyLines($parsedBlocks);
 		
 		return implode($this->glue, $parsedBlocks);
+	}
+	
+	/**
+	 * Parses the text using only the inline parsers
+	 */
+	public function parseInline(string $text): string
+	{
+		return $this->parseUsingInlineParsers($text);
 	}
 	
 	//--- Protected helpers -------------------------------------------------------------------------------------------
